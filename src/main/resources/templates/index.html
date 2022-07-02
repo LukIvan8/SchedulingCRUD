@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers</title>
+</head>
+<body>
+<div>
+    <p th:text="${#temporals.format(standardDate, 'dd-MM-yyyy HH:mm:ss')}"></p>
+   <table>
+       <tr>
+           <th>Future dates</th>
+       </tr>
+       <tr th:each="date : ${future_dates}">
+           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+       </tr>
+       <tr>
+           <th>Past Dates:</th>
+       </tr>
+       <tr th:each="date : ${past_dates}">
+           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+       </tr>
+       <tr>
+           <th>After one day</th>
+       </tr>
+       <tr th:each="date : ${one_dates}">
+           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+       </tr>
+       <tr>
+           <th>After three days</th>
+       </tr>
+       <tr th:each="date : ${three_dates}">
+           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+       </tr>
+       <tr>
+           <th>After seven days and later</th>
+       </tr>
+       <tr th:each="date : ${seven_dates}">
+           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+       </tr>
+
+   </table>
+</div>
+
+</body>
+</html>
