@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Admin page</title>
+</head>
+<body>
+
+<h1>Add event</h1>
+<form action="#" th:action="@{/admin}" th:object="${event}" method="post">
+    <p>Date: <input type="text" th:field="*{time_of_event}"></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>
