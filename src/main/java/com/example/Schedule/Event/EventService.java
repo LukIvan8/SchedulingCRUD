@@ -35,11 +35,11 @@ public class EventService{
                 past_dates.add(date);
             } else if (date.isAfter(current)) {
                 fut_dates.add(date);
-                if(date.isAfter(current.plusDays(1)) && date.isBefore(current.plusDays(2))){
+                if(date.isAfter(current.plusDays(1)) && date.isBefore(current.plusDays(3))){
                     one_dates.add(date);
-                } else if (date.isAfter(current.plusDays(3)) && date.isBefore(current.plusDays(4))) {
+                } else if (date.isAfter(current.plusDays(3)) && date.isBefore(current.plusDays(7))) {
                     three_dates.add(date);
-                } else if (date.isAfter(current.plusDays(7)) && date.isBefore(current.plusDays(8))) {
+                } else if (date.isAfter(current.plusDays(7))) {
                     seven_dates.add(date);
                 }
             }
