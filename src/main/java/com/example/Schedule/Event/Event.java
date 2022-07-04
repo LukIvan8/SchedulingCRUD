@@ -1,5 +1,7 @@
 package com.example.Schedule.Event;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
@@ -8,8 +10,10 @@ import java.time.LocalDateTime;
 @Table(name = "events")
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime time_of_event;
 
     public Event() {
