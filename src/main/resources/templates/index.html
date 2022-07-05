@@ -2,45 +2,40 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <style>
+        table,th,td{
+            border: 1px solid black;
+        }
+    </style>
     <title>Timers</title>
 </head>
 <body>
-<a href="/admin">Manage events</a>
+<form action="#" th:action="@{/addEvent}" th:object="${event}" method="post">
+    <p>Date: <label>
+        <input type="datetime-local" th:field="*{time_of_event}" required>
+    </label></p>
+    <p>Description: <label>
+        <input type="text" th:field="*{description}">
+    </label></p>
+    <input type="submit" value="Submit"/>
+</form>
 <div>
     <p th:text="${#temporals.format(standardDate, 'dd-MM-yyyy HH:mm:ss')}"></p>
-   <table>
-       <tr>
-           <th>Future dates</th>
-       </tr>
-       <tr th:each="date : ${future_dates}">
-           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
-       </tr>
-       <tr>
-           <th>Past Dates:</th>
-       </tr>
-       <tr th:each="date : ${past_dates}">
-           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
-       </tr>
-       <tr>
-           <th>After one day</th>
-       </tr>
-       <tr th:each="date : ${one_dates}">
-           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
-       </tr>
-       <tr>
-           <th>After three days</th>
-       </tr>
-       <tr th:each="date : ${three_dates}">
-           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
-       </tr>
-       <tr>
-           <th>After seven days and later</th>
-       </tr>
-       <tr th:each="date : ${seven_dates}">
-           <td th:text="${#temporals.format(date, 'dd-MM-yyyy HH:mm:ss')}"></td>
-       </tr>
-
-   </table>
+    <table>
+        <tr >
+            <th colspan="3">Planned Events</th>
+        </tr>
+        <tr th:each="event : ${future_dates}">
+            <td th:text="${#temporals.format(event.getTime_of_event(), 'dd-MM-yyyy HH:mm:ss')}"></td>
+            <td th:text="${event.getDescription()}"></td>
+            <td>
+                <form th:action="@{/deleteEvent}" th:object="${event}" method="post">
+                    <input type="hidden" th:value="*{id}" name="id">
+                    <input type="submit" value="Del"/>
+                </form>
+            </td>
+        </tr>
+    </table>
 </div>
 
 </body>
