@@ -16,12 +16,29 @@ public class Event {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime time_of_event;
 
+    private String description;
+
+
     public Event() {
     }
 
     public Event(Integer id, LocalDateTime time_of_event) {
         this.id = id;
         this.time_of_event = time_of_event;
+    }
+
+    public Event(Integer id, LocalDateTime time_of_event, String description) {
+        this.id = id;
+        this.time_of_event = time_of_event;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getId() {
